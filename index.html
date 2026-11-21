@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MLSec Columbia S26</title>
+  <meta name="description" content="Student research projects from COMS 4995 Machine Learning Security, Columbia University, Spring 2026.">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 15px; color: #222; background: #fff; margin: 0; }
+    .page { max-width: 820px; margin: 0 auto; padding: 40px 16px 60px; }
+    a { color: #1772d0; text-decoration: none; }
+    a:hover { color: #f09228; }
+    header { text-align: center; margin-bottom: 36px; }
+    header h1 { font-size: 32px; font-weight: 400; margin: 0 0 14px; }
+    header p { line-height: 1.55; margin: 0 auto 14px; max-width: 640px; }
+    .links { margin-top: 8px; }
+    h2 { font-size: 22px; font-weight: 400; margin: 34px 0 6px; }
+    .intro { line-height: 1.55; margin: 0 0 8px; }
+    .project { padding: 18px 0; }
+    .project .title { font-weight: 700; font-size: 15px; }
+    .project .authors { margin: 4px 0 8px; }
+    .project .abstract { line-height: 1.55; margin: 0 0 8px; }
+    .project .meta { font-style: italic; }
+    footer { margin-top: 40px; text-align: right; font-size: 13px; color: #777; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Machine Learning Security</h1>
+      <p>Student research projects from <strong>COMS 4995: Machine Learning Security</strong> at
+        <a href="https://www.cs.columbia.edu/">Columbia University</a>, Spring 2026, Columbia's first course
+        dedicated to the security of ML and AI systems. The course was taught by
+        <a href="https://www.cs.columbia.edu/~suman/">Prof. Suman Jana</a>, with
+        <strong>Daniel David</strong> as Teaching Assistant.</p>
+      <div class="links">
+        <a href="#projects">Projects</a> &nbsp;/&nbsp;
+        <a href="https://github.com/mlsec-columbia-s26">GitHub</a>
+      </div>
+    </header>
+
+    <h2>About the Course</h2>
+    <p class="intro">The course covered why ML systems break the assumptions of classical software security:
+      adversarial examples, data poisoning and backdoors, model extraction and privacy leakage, and the new
+      attack surface of LLM agents, including prompt injection and tool misuse. Students formed teams,
+      proposed an original research project, presented the background literature, and submitted their
+      papers through a conference-style review process on HotCRP.</p>
+
+    <h2 id="projects">Projects</h2>
+    <div id="list"></div>
+
+    <footer>Shared with the students' permission.</footer>
+  </div>
+
+  <script>
+    const projects = [
+      { title: "Early Commitment in LLMs and Its Amplification in Agentic Systems",
+        authors: "Jeewon Kim, Sally Go, Prajwal Raghunath",
+        abstract: "Large language models often rapidly commit to an initial interpretation of a prompt during autoregressive generation. Once this early interpretation forms, later clarifications or even explicit contradictions frequently have limited impact on the model’s final output. This phenomenon, which we refer to as early commitment, reflects weak internal backtracking within a single forward pass. In agentic systems, early interpretations are externalized into persistent artifacts such as goals, plans, memory entries, or constraints, so a transient inference bias can harden into a long-lived system-level failure. Understanding how early commitment arises and how agent architectures amplify it is critical for building reliable and secure AI systems." },
+      { title: "Indirect Prompt Injection in Agent Workflows",
+        authors: "Weiheng Yang, Begum Cicekdag, Nitish Ramaraj",
+        abstract: "Modern LLM systems increasingly operate as agents that rely on multi-step pipelines integrating external tools such as retrieval-augmented generation, web search, and API calls. While direct prompt injection has been widely studied, indirect prompt injection, where malicious instructions are embedded in retrieved content or tool outputs, remains a critical and underexplored risk. It is particularly dangerous because retrieved content is often trusted and can influence downstream reasoning. We study how indirect prompt injection manifests in agent pipelines and explore mitigation strategies that improve robustness without degrading agent utility." },
+      { title: "Obfuscated Protocol for Federated Learning Defending Against Network Traffic Fingerprinting",
+        authors: "Kevin Arista Solis, Robert Boada",
+        abstract: "Federated Learning enables privacy-preserving collaborative ML for sensitive applications without centralizing data. However, recent work showed that FL traffic can be fingerprinted with over 90% accuracy through passive network analysis, even with TLS: adversaries can identify participants, infer model architectures, and detect training rounds from packet sizes and timing. No existing defense addresses FL-specific fingerprinting. We ask whether an obfuscated FL protocol can make training traffic indistinguishable from benign HTTPS, defeating state-of-the-art fingerprinting while keeping performance overhead under 30%." },
+      { title: "Teacher-Student Architecture for Modeled Conversion Labels",
+        authors: "Frances Crawford, Rohan Singh",
+        abstract: "Search recommendation models are trained on query, impression, and click-level data. Bots issuing garbage queries can corrupt the authenticity of query suggestions and even create unsafe or malicious ones. Corrupted labels then propagate into student models trained on them, making production search models inaccurate. We study how susceptible teacher-student label modeling is to bot-generated queries, impressions, and clicks." },
+      { title: "TEN-Group: Trust-Independent Consensus for Byzantine-Robust Multi-LLM Systems",
+        authors: "Trisha Srikanth, Elizabeth Kushelevsky, Nicholas Assaderaghi",
+        abstract: "Current multi-LLM consensus protocols rely on mutable trust substrates such as reputation weights and scores. Beyond its outputs, a policy-compliant Byzantine agent can covertly manipulate these substrates to steer consensus toward unsafe results, a vulnerability existing defenses fail to address. The very mechanisms designed to ensure reliability become the primary attack surface. We propose a trust-independent consensus protocol for Byzantine-robust multi-LLM systems." },
+      { title: "The Adversaries",
+        authors: "Liam Davis, Romain Emil Popescu",
+        abstract: "Gradient-based attacks such as GCG have shown that LLMs remain vulnerable to white-box jailbreaks, and I-GCG reached a 100% attack success rate, but only against older models. Little evaluation exists on recent models with stronger post-training and alignment. We improve I-GCG to achieve high attack success rates on current models and defenses, under a white-box threat model with full gradient access and no ability to modify weights or poison training data." },
+      { title: "Weak Poisoning in Multi-Agent Agentic RAG",
+        authors: "David Juarez, Tanya Mehta",
+        abstract: "Agentic retrieval-augmented generation systems use multiple agents that retrieve, critique, and vote to improve answer trustworthiness. At the same time, RAG is vulnerable to weak poisoning, where inserting only a few malicious passages into a large corpus can force targeted wrong answers. We investigate whether multi-agent collaboration reduces weak poisoning through cross-checking, or amplifies it through propagation and false consensus." },
+      { title: "When LLMs Know Too Much: Mitigating Unauthorized Access in Multi-User Retrieval-Augmented LLM Systems",
+        authors: "Priscilla Zhu, Isaac James Schmidt, Colin Calvetti",
+        abstract: "RAG-based LLMs are an integral part of many wealth management firms’ internal systems, giving analysts fast access to documents that often hold highly sensitive information. How do these systems ensure sensitive data is not leaked to unauthorized internal users? We examine the security risks and safeguards of RAG-based LLM systems, and the technical controls needed to prevent unauthorized information flow in a multi-user document environment." },
+    ];
+    const list = document.getElementById("list");
+    projects.forEach((p, i) => {
+      const pdf = "papers/project" + (i + 1) + ".pdf";
+      const d = document.createElement("div");
+      d.className = "project";
+      d.innerHTML =
+        '<a class="title" href="' + pdf + '"></a>' +
+        '<div class="authors"></div><p class="abstract"></p>' +
+        '<div class="meta">Project ' + (i + 1) + ' &nbsp;/&nbsp; <a href="' + pdf + '">paper (PDF)</a></div>';
+      d.querySelector(".title").textContent = p.title;
+      d.querySelector(".authors").textContent = p.authors;
+      d.querySelector(".abstract").textContent = p.abstract;
+      list.appendChild(d);
+    });
+  </script>
+</body>
+</html>
