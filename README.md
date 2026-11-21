@@ -39,4 +39,4 @@ David Juarez, Tanya Mehta
 Priscilla Zhu, Isaac James Schmidt, Colin Calvetti  
 [Paper (PDF)](papers/project8.pdf)
 
-*Shared with the students' permission.*
+
